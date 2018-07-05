@@ -7,10 +7,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
-import javafx.scene.shape.Line;
+import shape.MyOval;
+import shape.MySquare;
 import shape.MyLine;
 
 public class Control {
@@ -26,6 +24,28 @@ public class Control {
 
     @FXML
     private Canvas drawCanvas;
+
+    @FXML
+    public void drawSquare(MouseEvent onMouseClicked) {
+        drawCanvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                MySquare mySquare = new MySquare(event.getX(),event.getY(),60,40);
+                mySquare.draw(drawCanvas);
+            }
+        });
+    }
+
+    @FXML
+    public void drawOval(MouseEvent onMouseClicked) {
+        drawCanvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                MyOval myOval = new MyOval(event.getX(),event.getY(),60,30);
+                myOval.draw(drawCanvas);
+            }
+        });
+    }
 
     @FXML
     public void drawLine(MouseEvent onMouseClicked) {

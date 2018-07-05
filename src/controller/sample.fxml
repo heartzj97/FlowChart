@@ -45,12 +45,12 @@
                   <Image url="file:/C:/Users/86794/Desktop/FlowChart/image/arrow.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="square" fitHeight="120.0" fitWidth="120.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="square" fitHeight="120.0" fitWidth="120.0" layoutY="180.0" onMouseClicked="#drawSquare" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/C:/Users/86794/Desktop/FlowChart/image/process.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="circle" fitHeight="120.0" fitWidth="120.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="oval" fitHeight="120.0" fitWidth="120.0" layoutY="90.0" onMouseClicked="#drawOval" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/C:/Users/86794/Desktop/FlowChart/image/prepare.png" />
                </image>
