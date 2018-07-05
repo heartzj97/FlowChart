@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -13,7 +15,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="rootBorder" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Control">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -36,9 +38,9 @@
       </MenuBar>
    </top>
    <left>
-      <AnchorPane fx:id="line" nodeOrientation="LEFT_TO_RIGHT" prefHeight="618.0" prefWidth="108.0" BorderPane.alignment="CENTER">
+      <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="618.0" prefWidth="108.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="line" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="myLine" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#drawLine" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="file:/C:/Users/86794/Desktop/FlowChart/image/arrow.png" />
                </image>
@@ -57,9 +59,12 @@
       </AnchorPane>
    </left>
    <center>
-      <ScrollPane prefHeight="618.0" prefWidth="457.0" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="centerPane" prefHeight="618.0" prefWidth="457.0" BorderPane.alignment="CENTER">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="571.0" prefWidth="524.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="571.0" prefWidth="524.0">
+               <children>
+                  <Canvas fx:id="drawCanvas" height="597.0" layoutX="6.0" layoutY="-6.0" width="486.0" />
+               </children></AnchorPane>
         </content>
       </ScrollPane>
    </center>

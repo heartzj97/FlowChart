@@ -1,40 +1,35 @@
 package shape;
 
+import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-public class MyLine extends Line implements Shape {
+public class MyLine implements Shape {
 
     protected double startX;
     protected double startY;
     protected double endX;
     protected double endY;
 
+
     public MyLine(double centerX,double centerY ,double lineLength) {
-        super(centerX, centerY-lineLength/2, centerX, centerY+lineLength/2);
-        // TODO Auto-generated constructor stub
-
-        getLinePara(centerX, centerY, lineLength);
-
         //可补充
-        selfDefine();
-    }
-
-    public void getLinePara(double x,double y,double lineLength) {
-        startX = x;
-        endX = x;
-        startY = y-lineLength/2;
-        endY = y+lineLength/2;
-    }
-
-    public void selfDefine() {
-        setStroke(Color.GREEN);
-        //设置画线使用虚线，实线长度，虚线长度
-        //getStrokeDashArray().setAll();
+        startX = centerX;
+        startY = centerY-lineLength/2;
+        endX = centerX;
+        endY = centerY+lineLength/2;
     }
 
     @Override
-    public void draw() {
+    public void draw(Canvas drawCanvas) {
+        GraphicsContext gc = drawCanvas.getGraphicsContext2D();
+        gc.setStroke(Color.BLACK);
+        gc.setFill(Color.BLACK);
+        gc.setLineWidth(4);
+        gc.strokeLine(startX,startY,endX,endY);
+        gc.fillPolygon(new double[]{endX-5,endX,endX+5},new double[]{endY,endY+5,endY},3);
 
     }
 

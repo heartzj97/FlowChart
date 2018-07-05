@@ -1,5 +1,7 @@
 package shape;
 
+import javafx.scene.canvas.Canvas;
+
 public interface Shape {
-    void draw();
+    void draw(Canvas drawCanvas);
 }
