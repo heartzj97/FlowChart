@@ -14,7 +14,7 @@ public class MyOval implements Shape {
     public MyOval(double x, double y, double a, double b) {
         ovalA = a;
         ovalB = b;
-        ovalX = x;
+        ovalX = x-a/2;
         ovalY = y;
     }
 

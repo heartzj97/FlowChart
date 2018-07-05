@@ -6,7 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-public class MyLine implements Shape {
+public class MyArrow implements Shape {
 
     protected double startX;
     protected double startY;
@@ -14,12 +14,12 @@ public class MyLine implements Shape {
     protected double endY;
 
 
-    public MyLine(double centerX,double centerY ,double lineLength) {
+    public MyArrow(double centerX,double centerY ,double lineLength) {
         //可补充
         startX = centerX;
-        startY = centerY-lineLength/2;
+        startY = centerY;
         endX = centerX;
-        endY = centerY+lineLength/2;
+        endY = centerY+lineLength;
     }
 
     @Override
