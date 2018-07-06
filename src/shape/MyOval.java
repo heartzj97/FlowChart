@@ -20,8 +20,9 @@ public class MyOval implements Shape {
     private TextField height;
     private TextField width;
     private Button modify;
+    private Button delete;
 
-    public void setParameter(double x, double y, double a, double b, TextField h, TextField w, Button m) {
+    public void setParameter(double x, double y, double a, double b, TextField h, TextField w, Button m, Button d) {
         ovalA = a;
         ovalB = b;
         ovalX = x - a / 2;
@@ -29,10 +30,11 @@ public class MyOval implements Shape {
         height = h;
         width = w;
         modify = m;
+        delete = d;
     }
     @Override
-    public void draw(AnchorPane anchorPane, double x, double y, TextField h, TextField w, Button m) {
-        this.setParameter(x, y, 120, 80, h, w, m);
+    public void draw(AnchorPane anchorPane, double x, double y, TextField h, TextField w, Button m, Button d) {
+        this.setParameter(x, y, 120, 80, h, w, m, d);
 
         Canvas drawCanvas = new Canvas();
         drawCanvas.setLayoutX(ovalX-2);
@@ -50,11 +52,10 @@ public class MyOval implements Shape {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
                 if(event.getClickCount()==2) {
-                    TextArea textArea = new TextArea();
-                    textArea.setLayoutX(ovalX+ovalA/4);
-                    textArea.setLayoutY(ovalY+ovalB/4);
-                    textArea.setPrefSize(ovalA/2,ovalB/2);
-                    anchorPane.getChildren().add(textArea);
+                    MyText myText = new MyText();
+                    myText.setA(ovalA/2);
+                    myText.setB(ovalB/2);
+                    myText.draw(anchorPane,ovalX+ovalA/2,ovalY+ovalB/4,height,width,modify,delete);
                 }
                 else if(event.getClickCount()==1) {
                     height.setText(String.valueOf(ovalB));
@@ -68,6 +69,12 @@ public class MyOval implements Shape {
                             drawCanvas.setHeight(ovalB+2);
                             drawCanvas.setWidth(ovalA+2);
                             gc.strokeOval(1,1,ovalA,ovalB);
+                        }
+                    });
+                    delete.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            gc.clearRect(0,0,ovalA+2,ovalB+2);
                         }
                     });
                 }

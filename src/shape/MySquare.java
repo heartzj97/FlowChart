@@ -23,8 +23,9 @@ public class MySquare implements Shape {
     private TextField height;
     private TextField width;
     private Button modify;
+    private Button delete;
 
-    public void setParameter(double x, double y, double a, double b,TextField h,TextField w,Button m) {
+    public void setParameter(double x, double y, double a, double b,TextField h,TextField w,Button m, Button d) {
         leftUpX = x-a/2;
         leftUpY = y;
         rightUpX = x+a/2;
@@ -36,11 +37,12 @@ public class MySquare implements Shape {
         height = h;
         width = w;
         modify = m;
+        delete = d;
     }
 
     @Override
-    public void draw(AnchorPane anchorPane, double x, double y, TextField h, TextField w, Button m) {
-        this.setParameter(x, y, 120, 80, h, w, m);
+    public void draw(AnchorPane anchorPane, double x, double y, TextField h, TextField w, Button m, Button d) {
+        this.setParameter(x, y, 120, 80, h, w, m, d);
 
         Canvas drawCanvas = new Canvas();
         drawCanvas.setLayoutX(leftUpX-2);
@@ -62,11 +64,10 @@ public class MySquare implements Shape {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
                 if(event.getClickCount()==2) {
-                    TextArea textArea = new TextArea();
-                    textArea.setLayoutX(leftUpX+6);
-                    textArea.setLayoutY(leftUpY+6);
-                    textArea.setPrefSize(rightUpX-leftUpX-15,leftDownY-leftUpY-15);
-                    anchorPane.getChildren().add(textArea);
+                    MyText myText = new MyText();
+                    myText.setA(rightUpX-leftUpX-18);
+                    myText.setB(leftDownY-leftUpY-18);
+                    myText.draw(anchorPane,(leftUpX+rightUpX)/2,leftUpY+12,height,width,modify,delete);
                 }
                 else if(event.getClickCount()==1) {
                     height.setText(String.valueOf(leftDownY-leftUpY));
@@ -86,6 +87,12 @@ public class MySquare implements Shape {
                             gc.strokeLine(1, 1, rightDownX - leftDownX, 1);
                             gc.strokeLine(rightDownX-leftDownX, rightDownY-leftUpY, 1, leftDownY - leftUpY);
                             gc.strokeLine(rightDownX-leftDownX, rightDownY-leftUpY, rightDownX - leftDownX, 1);
+                        }
+                    });
+                    delete.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            gc.clearRect(0,0,rightDownX-leftDownX+2,leftDownY-leftUpY+2);
                         }
                     });
                 }

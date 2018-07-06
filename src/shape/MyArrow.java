@@ -19,11 +19,12 @@ public class MyArrow implements Shape {
     private TextField height;
     private TextField width;
     private Button modify;
+    private Button delete;
     static private double LINEWIDTH = 4;
 
 
 
-    public void setParameter(double centerX, double centerY, double lineLength,TextField h,TextField w, Button m) {
+    public void setParameter(double centerX, double centerY, double lineLength,TextField h,TextField w, Button m, Button d) {
         //可补充
         startX = centerX;
         startY = centerY;
@@ -32,12 +33,13 @@ public class MyArrow implements Shape {
         height = h;
         width = w;
         modify = m;
+        delete = d;
     }
 
     @Override
-    public void draw(AnchorPane anchorPane, double x, double y, TextField h, TextField w, Button m) {
+    public void draw(AnchorPane anchorPane, double x, double y, TextField h, TextField w, Button m, Button d) {
 
-        this.setParameter(x,y,40,h,w,m);
+        this.setParameter(x,y,40,h,w,m,d);
 
         Canvas drawCanvas = new Canvas();
         drawCanvas.setLayoutX(startX - 5);
@@ -66,6 +68,12 @@ public class MyArrow implements Shape {
                         gc.strokeLine(5, 0, 5, endY - startY);
                         gc.fillPolygon(new double[]{0, 5, 10}, new double[]{endY - startY, endY - startY + 5, endY - startY}, 3);
                         width.setText(String.valueOf(LINEWIDTH));
+                    }
+                });
+                delete.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        gc.clearRect(0, 0, 10, endY - startY + 10);
                     }
                 });
             }

@@ -25,8 +25,9 @@ public class MyDiamond implements Shape {
     private TextField height;
     private TextField width;
     private Button modify;
+    private Button delete;
 
-    public void setParameter(double x,double y,double a,double b, TextField h, TextField w, Button m) {
+    public void setParameter(double x,double y,double a,double b, TextField h, TextField w, Button m, Button d) {
         upX = x;
         upY = y;
         downX = x;
@@ -40,12 +41,13 @@ public class MyDiamond implements Shape {
         height = h;
         width = w;
         modify = m;
+        delete = d;
     }
 
     @Override
-    public void draw(AnchorPane anchorPane, double x, double y, TextField h, TextField w, Button m) {
+    public void draw(AnchorPane anchorPane, double x, double y, TextField h, TextField w, Button m, Button d) {
 
-        this.setParameter(x, y,120,80, h, w, m);
+        this.setParameter(x, y,120,80, h, w, m, d);
 
         Canvas drawCanvas = new Canvas();
         drawCanvas.setLayoutX(upX-diamondA/2-2);
@@ -90,13 +92,18 @@ public class MyDiamond implements Shape {
                             gc.strokeLine(diamondA/2,diamondB,diamondA,diamondB/2);
                         }
                     });
+                    delete.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                        @Override
+                        public void handle(MouseEvent event) {
+                            gc.clearRect(0,0,diamondA+2,diamondB+2);
+                        }
+                    });
                 }
                 else if(event.getClickCount()==2) {
-                    TextArea textArea = new TextArea();
-                    textArea.setLayoutX(upX-diamondA/4);
-                    textArea.setLayoutY(upY+diamondB/4);
-                    textArea.setPrefSize(diamondA/2-2,diamondB/2-2);
-                    anchorPane.getChildren().add(textArea);
+                    MyText myText = new MyText();
+                    myText.setA(diamondA/2-3);
+                    myText.setB(diamondB/2-3);
+                    myText.draw(anchorPane,upX,upY+diamondB/4+5,height,width,modify,delete);
                 }
             }
         });

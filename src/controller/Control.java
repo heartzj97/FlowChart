@@ -27,6 +27,9 @@ public class Control {
     private Button modify;
 
     @FXML
+    private Button delete;
+
+    @FXML
     public void drawSquare(MouseEvent onMouseClicked) {
         drawCanvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
             int flag = 0;
@@ -35,7 +38,7 @@ public class Control {
                 if(flag==0) {
                     ShapeFactory factory = new ShapeFactory();
                     Shape myShape = factory.getShape("SQUARE");
-                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify);
+                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify, delete);
                     flag = 1;
                 }
             }
@@ -51,7 +54,7 @@ public class Control {
                 if(flag==0) {
                     ShapeFactory factory = new ShapeFactory();
                     Shape myShape = factory.getShape("OVAL");
-                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify);
+                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify, delete);
                     flag = 1;
                 }
             }
@@ -67,7 +70,7 @@ public class Control {
                 if(flag==0) {
                     ShapeFactory factory = new ShapeFactory();
                     Shape myShape = factory.getShape("DIAMOND");
-                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify);
+                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify, delete);
                     flag = 1;
                 }
             }
@@ -84,7 +87,7 @@ public class Control {
                 if(i==0) {
                     ShapeFactory factory = new ShapeFactory();
                     Shape myShape = factory.getShape("TEXT");
-                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify);
+                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify, delete);
                     i = 1;
                 }
             }
@@ -100,7 +103,7 @@ public class Control {
                 if(flag==0) {
                     ShapeFactory factory = new ShapeFactory();
                     Shape myShape = factory.getShape("ARROW");
-                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify);
+                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify, delete);
                     flag = 1;
                 }
             }
