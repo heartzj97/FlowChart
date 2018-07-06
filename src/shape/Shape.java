@@ -1,7 +1,7 @@
 package shape;
 
-import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.AnchorPane;
 
 public interface Shape {
-    void draw(Canvas drawCanvas);
+    void draw(AnchorPane anchorPane);
 }
