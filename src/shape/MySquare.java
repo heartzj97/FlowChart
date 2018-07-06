@@ -24,7 +24,7 @@ public class MySquare implements Shape {
     private TextField width;
     private Button modify;
 
-    public MySquare(double x, double y, double a, double b,TextField h,TextField w,Button m) {
+    public void setParameter(double x, double y, double a, double b,TextField h,TextField w,Button m) {
         leftUpX = x-a/2;
         leftUpY = y;
         rightUpX = x+a/2;
@@ -39,7 +39,9 @@ public class MySquare implements Shape {
     }
 
     @Override
-    public void draw(AnchorPane anchorPane) {
+    public void draw(AnchorPane anchorPane, double x, double y, TextField h, TextField w, Button m) {
+        this.setParameter(x, y, 120, 80, h, w, m);
+
         Canvas drawCanvas = new Canvas();
         drawCanvas.setLayoutX(leftUpX-2);
         drawCanvas.setLayoutY(leftUpY-2);

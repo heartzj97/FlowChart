@@ -22,7 +22,8 @@ public class MyArrow implements Shape {
     static private double LINEWIDTH = 4;
 
 
-    public MyArrow(double centerX, double centerY, double lineLength,TextField h,TextField w, Button m) {
+
+    public void setParameter(double centerX, double centerY, double lineLength,TextField h,TextField w, Button m) {
         //可补充
         startX = centerX;
         startY = centerY;
@@ -34,7 +35,10 @@ public class MyArrow implements Shape {
     }
 
     @Override
-    public void draw(AnchorPane anchorPane) {
+    public void draw(AnchorPane anchorPane, double x, double y, TextField h, TextField w, Button m) {
+
+        this.setParameter(x,y,40,h,w,m);
+
         Canvas drawCanvas = new Canvas();
         drawCanvas.setLayoutX(startX - 5);
         drawCanvas.setLayoutY(startY - 5);

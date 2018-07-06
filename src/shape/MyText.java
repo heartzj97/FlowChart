@@ -1,6 +1,8 @@
 package shape;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 public class MyText implements Shape {
@@ -14,7 +16,7 @@ public class MyText implements Shape {
     private double rightDownX;
     private double rightDownY;
 
-    public MyText(double x,double y,double a,double b) {
+    public void setParameter(double x,double y,double a,double b) {
         leftUpX = x-a/2;
         leftUpY = y;
         rightUpX = x+a/2;
@@ -26,7 +28,9 @@ public class MyText implements Shape {
     }
 
     @Override
-    public void draw(AnchorPane pane) {
+    public void draw(AnchorPane pane, double x, double y, TextField h, TextField w, Button m) {
+        this.setParameter(x, y, 60, 40);
+
         TextArea textArea = new TextArea();
         textArea.setLayoutX(leftUpX);
         textArea.setLayoutY(leftUpY-6);

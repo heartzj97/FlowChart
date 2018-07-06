@@ -21,19 +21,19 @@ public class MyOval implements Shape {
     private TextField width;
     private Button modify;
 
-
-    public MyOval(double x, double y, double a, double b, TextField h, TextField w, Button m) {
+    public void setParameter(double x, double y, double a, double b, TextField h, TextField w, Button m) {
         ovalA = a;
         ovalB = b;
-        ovalX = x-a/2;
+        ovalX = x - a / 2;
         ovalY = y;
         height = h;
         width = w;
         modify = m;
     }
-
     @Override
-    public void draw(AnchorPane anchorPane) {
+    public void draw(AnchorPane anchorPane, double x, double y, TextField h, TextField w, Button m) {
+        this.setParameter(x, y, 120, 80, h, w, m);
+
         Canvas drawCanvas = new Canvas();
         drawCanvas.setLayoutX(ovalX-2);
         drawCanvas.setLayoutY(ovalY-2);

@@ -33,8 +33,9 @@ public class Control {
             @Override
             public void handle(MouseEvent event) {
                 if(flag==0) {
-                    MySquare mySquare = new MySquare(event.getX(), event.getY(), 120, 80, height, width, modify);
-                    mySquare.draw(anchorPane);
+                    ShapeFactory factory = new ShapeFactory();
+                    Shape myShape = factory.getShape("SQUARE");
+                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify);
                     flag = 1;
                 }
             }
@@ -48,8 +49,9 @@ public class Control {
             @Override
             public void handle(MouseEvent event) {
                 if(flag==0) {
-                    MyOval myOval = new MyOval(event.getX(), event.getY(), 120, 80, height, width, modify);
-                    myOval.draw(anchorPane);
+                    ShapeFactory factory = new ShapeFactory();
+                    Shape myShape = factory.getShape("OVAL");
+                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify);
                     flag = 1;
                 }
             }
@@ -63,8 +65,9 @@ public class Control {
             @Override
             public void handle(MouseEvent event) {
                 if(flag==0) {
-                    MyDiamond myDiamond = new MyDiamond(event.getX(), event.getY(), 120, 80, height, width ,modify);
-                    myDiamond.draw(anchorPane);
+                    ShapeFactory factory = new ShapeFactory();
+                    Shape myShape = factory.getShape("DIAMOND");
+                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify);
                     flag = 1;
                 }
             }
@@ -79,8 +82,9 @@ public class Control {
             @Override
             public void handle(MouseEvent event) {
                 if(i==0) {
-                    MyText myText = new MyText(event.getX(), event.getY(), 60, 40);
-                    myText.draw(anchorPane);
+                    ShapeFactory factory = new ShapeFactory();
+                    Shape myShape = factory.getShape("TEXT");
+                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify);
                     i = 1;
                 }
             }
@@ -94,8 +98,9 @@ public class Control {
             @Override
             public void handle(MouseEvent event) {
                 if(flag==0) {
-                    MyArrow myArrow = new MyArrow(event.getX(), event.getY(), 40, height, width, modify);
-                    myArrow.draw(anchorPane);
+                    ShapeFactory factory = new ShapeFactory();
+                    Shape myShape = factory.getShape("ARROW");
+                    myShape.draw(anchorPane, event.getX(), event.getY(), height, width, modify);
                     flag = 1;
                 }
             }

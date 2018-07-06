@@ -26,7 +26,7 @@ public class MyDiamond implements Shape {
     private TextField width;
     private Button modify;
 
-    public MyDiamond(double x,double y,double a,double b, TextField h, TextField w, Button m) {
+    public void setParameter(double x,double y,double a,double b, TextField h, TextField w, Button m) {
         upX = x;
         upY = y;
         downX = x;
@@ -43,7 +43,10 @@ public class MyDiamond implements Shape {
     }
 
     @Override
-    public void draw(AnchorPane anchorPane) {
+    public void draw(AnchorPane anchorPane, double x, double y, TextField h, TextField w, Button m) {
+
+        this.setParameter(x, y,120,80, h, w, m);
+
         Canvas drawCanvas = new Canvas();
         drawCanvas.setLayoutX(upX-diamondA/2-2);
         drawCanvas.setLayoutY(upY-2);
